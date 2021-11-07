@@ -30,8 +30,8 @@ const Table = ({data}) => {
         <TableFilter changeType={changeType}/>
         <TableHeader tableActive={matureTableActive} hideContent={() => hideTable('mature')}>Mature Applications</TableHeader>
         {matureTableActive ? null : <TableContent data={filteredData}/>}
-        {/* <TableHeader tableActive={betaTableActive} hideContent={() => hideTable('beta')}>Beta Applications</TableHeader>
-        {betaTableActive ? null : <TableContent data={filteredData}/>} */}
+        <TableHeader tableActive={betaTableActive} hideContent={() => hideTable('beta')}>Beta Applications</TableHeader>
+        {betaTableActive ? null : <TableContent data={filteredData}/>}
     </div>      
     </>
     );
