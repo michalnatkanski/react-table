@@ -1,0 +1,15 @@
+.wrapper {
+    border: 1px solid gray;
+    width: 100%;
+
+    td {
+        border: 1px solid gray;
+        transition: .2s ease;
+        padding: 4px;
+        cursor: pointer;
+    }
+
+    td:hover {
+        background-color: rgb(190, 235, 122);
+    }
+}
