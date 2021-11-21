@@ -3,9 +3,7 @@ import TableContent from '../TableContent/TableContent';
 import TableHeader from "../TableHeader/TableHeader";
 import TableFilter from "../TableFilter/TableFilter";
 
-const Table = ({
-    typesFilter, 
-    setUrlSlug, 
+const Table = ({ 
     hideTable, 
     tableActive, 
     handleChangeType, 
@@ -15,23 +13,18 @@ const Table = ({
     <>
     <div className={styles.wrapper}>
         <TableFilter 
-            typesFilter={typesFilter} 
             handleChangeType={handleChangeType} 
             activeButtons={activeButtons}/>
        <TableHeader 
             tableActive={tableActive.matureTable} 
             hideContent={() => hideTable(true)}>mature</TableHeader>
-        {tableActive.matureTable ? null : 
-        <TableContent 
-            setUrlSlug={setUrlSlug} 
-            data={filteredData.matureApplications}/>}
+            {tableActive.matureTable ? null : 
+        <TableContent data={filteredData.matureApplications}/>}
             <TableHeader 
             tableActive={tableActive.betaTable} 
             hideContent={() => hideTable(false)}>beta</TableHeader>
-        {tableActive.betaTable ? null : 
-        <TableContent 
-            setUrlSlug={setUrlSlug} 
-            data={filteredData.betaApplications}/>}
+            {tableActive.betaTable ? null : 
+        <TableContent data={filteredData.betaApplications}/>}
     </div>      
     </>
     );

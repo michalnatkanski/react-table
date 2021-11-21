@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from '../TableContent/TableContent.module.scss';
+import { setUrlSlug } from '../../utils/Helpers';
 
-const TableContent = React.memo(({data, setUrlSlug}) => {
-    console.log('content')
-    return(
+const TableContent = React.memo(({data}) => (
         <table className={styles.wrapper}>
             <thead className={styles.wrapper__column}>
                     <tr>
@@ -22,6 +21,6 @@ const TableContent = React.memo(({data, setUrlSlug}) => {
                 ))}
             </tbody>
             </table>
-    )})
+    ))
 
 export default TableContent;

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import Table from '../../components/Table/Table';
-import {data, typesFilter, setFilterDataType, setUrlSlug} from '../../utils/Helpers';
+import {typesFilter, setFilterDataType} from '../../utils/Helpers';
 
 const Root = () =>   {
-
-    //hooks - setTableActive for hiding tables | setFiteredData for fitered state
+    //hooks
+    //setTableActive
     const [tableActive, setTableActive] = useState({matureTable: false,betaTable: true});
+    //setFilteredData
     const [filteredData, setFilteredData] = useState(setFilterDataType("IT"));
+    //setActiveButtons
     const [activeButtons, setActiveButtons] = useState({
     activeBtn: "IT",    
     btns: [...typesFilter]
@@ -17,13 +19,13 @@ const Root = () =>   {
             matureTable: !tableActive.matureTable, 
             betaTable: tableActive.betaTable
         }) :
-                setTableActive({
-                  matureTable: tableActive.matureTable, 
-                  betaTable: !tableActive.betaTable
-              }) 
-      }
+        setTableActive({
+            matureTable: tableActive.matureTable, 
+            betaTable: !tableActive.betaTable
+        }) 
+    }
 
-    //changeType function setting fitered data in setFilteredData hook 
+    //handleChangeType
     const handleChangeType = (i, type) => {
         setActiveButtons({...activeButtons, activeBtn: activeButtons.btns[i]})
         setFilteredData({
@@ -34,9 +36,6 @@ const Root = () =>   {
 
     return (                                                                                                                                                          
       <Table
-          data={data} 
-          typesFilter={typesFilter} 
-          setUrlSlug={setUrlSlug}
           hideTable={hideTable}
           tableActive={tableActive}
           handleChangeType={handleChangeType}

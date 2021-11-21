@@ -1,9 +1,9 @@
 import styles from '../TableFilter/TableFilter.module.scss';
 import Button from "../Button/Button";
+import { typesFilter } from '../../utils/Helpers';
 
 const TableFilter = ({
     handleChangeType, 
-    typesFilter, 
     activeButtons 
     }) => (
         <div className={styles.wrapper}>

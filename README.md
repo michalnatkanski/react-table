@@ -14,7 +14,7 @@
 
 ## How to start
 
-Run - 
+open terminal and run - 
 1. npm install
 2. npm install node-sass (on macbook m1 core node sass is require in 4.14.1 version - npm install node-sass@4.14.1 )
 3. npm start
