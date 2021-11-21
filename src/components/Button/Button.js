@@ -9,7 +9,7 @@ const Button = ({
     indexButton 
     }) => (<button 
             type="button"
-            className={type ? (activeButtons.activeBtn === type ? 
+            className={type ? (activeButtons.activeButton === type ? 
             styles.filterBtnActive : styles.filterBtn) : (styles.tableBtn)}  
             onClick={type ? () => handleChangeType(indexButton, type) :  hideContent}>
             {children}

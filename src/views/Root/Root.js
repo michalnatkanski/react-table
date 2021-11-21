@@ -30,7 +30,7 @@ const Root = () =>   {
     //the method called after clicking on the button changes current button state to active
     // and filters the data in the table.
     const handleChangeType = (i, type) => {
-        setActiveButtons({...activeButtons, activeBtn: activeButtons.allButtons[i]})
+        setActiveButtons({...activeButtons, activeButton: activeButtons.allButtons[i]})
         setFilteredData({
             betaApplications: setFilterDataType(type).betaApplications,
             matureApplications: setFilterDataType(type).matureApplications
