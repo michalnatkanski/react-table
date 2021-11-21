@@ -4,7 +4,7 @@ import TableHeader from "../TableHeader/TableHeader";
 import TableFilter from "../TableFilter/TableFilter";
 
 const Table = ({ 
-    hideTable, 
+    handleTableHide, 
     tableActive, 
     handleChangeType, 
     filteredData, 
@@ -17,12 +17,12 @@ const Table = ({
             activeButtons={activeButtons}/>
        <TableHeader 
             tableActive={tableActive.matureTable} 
-            hideContent={() => hideTable(true)}>mature</TableHeader>
+            hideContent={() => handleTableHide(true)}>mature</TableHeader>
             {tableActive.matureTable ? null : 
         <TableContent data={filteredData.matureApplications}/>}
             <TableHeader 
             tableActive={tableActive.betaTable} 
-            hideContent={() => hideTable(false)}>beta</TableHeader>
+            hideContent={() => handleTableHide(false)}>beta</TableHeader>
             {tableActive.betaTable ? null : 
         <TableContent data={filteredData.betaApplications}/>}
     </div>      

@@ -3,18 +3,20 @@ import Table from '../../components/Table/Table';
 import {typesFilter, setFilterDataType} from '../../utils/Helpers';
 
 const Root = () =>   {
-    //hooks
-    //setTableActive
+    
+    //sets the state of the active table
     const [tableActive, setTableActive] = useState({matureTable: false,betaTable: true});
-    //setFilteredData
+    //sets the state of the data type 
     const [filteredData, setFilteredData] = useState(setFilterDataType("IT"));
-    //setActiveButtons
+    //sets the state of the current active button 
     const [activeButtons, setActiveButtons] = useState({
-    activeBtn: "IT",    
-    btns: [...typesFilter]
+    activeButton: "IT",    
+    allButtons: [...typesFilter]
     });
 
-    const hideTable = (table) => {
+    //the method passed to TableHeader -> Button
+    //after clicking on the button, it sets the state and hides the contents of the table.
+    const handleTableHide = (table) => {
         table ? setTableActive({
             matureTable: !tableActive.matureTable, 
             betaTable: tableActive.betaTable
@@ -25,9 +27,10 @@ const Root = () =>   {
         }) 
     }
 
-    //handleChangeType
+    //the method called after clicking on the button changes current button state to active
+    // and filters the data in the table.
     const handleChangeType = (i, type) => {
-        setActiveButtons({...activeButtons, activeBtn: activeButtons.btns[i]})
+        setActiveButtons({...activeButtons, activeBtn: activeButtons.allButtons[i]})
         setFilteredData({
             betaApplications: setFilterDataType(type).betaApplications,
             matureApplications: setFilterDataType(type).matureApplications
@@ -36,7 +39,7 @@ const Root = () =>   {
 
     return (                                                                                                                                                          
       <Table
-          hideTable={hideTable}
+          handleTableHide={handleTableHide}
           tableActive={tableActive}
           handleChangeType={handleChangeType}
           filteredData={filteredData}
