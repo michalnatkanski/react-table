@@ -1,13 +1,13 @@
 import styles from '../TableFilter/TableFilter.module.scss';
 import Button from "../Button/Button";
-import { typesFilter } from '../../utils/Helpers';
+import { genericData} from '../../helpers/Helpers';
 
 const TableFilter = ({
     handleChangeType, 
     activeButtons 
     }) => (
         <div className={styles.wrapper}>
-            {typesFilter.map((type, i) => 
+            {genericData.typesFilter.map((type, i) => 
                 <Button 
                     activeButtons={activeButtons} 
                     indexButton={i} 

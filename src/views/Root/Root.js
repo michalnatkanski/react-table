@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import Table from '../../components/Table/Table';
-import {typesFilter, setFilterDataType} from '../../utils/Helpers';
+import { genericData } from '../../helpers/Helpers';
 
 const Root = () =>   {
-    
+
     //sets the state of the active table
     const [tableActive, setTableActive] = useState({matureTable: false,betaTable: true});
     //sets the state of the data type 
-    const [filteredData, setFilteredData] = useState(setFilterDataType("IT"));
+    const [filteredData, setFilteredData] = useState(genericData.setFilterDataType("IT"));
     //sets the state of the current active button 
     const [activeButtons, setActiveButtons] = useState({
     activeButton: "IT",    
-    allButtons: [...typesFilter]
+    allButtons: [...genericData.typesFilter]
     });
 
     //the method passed to TableHeader -> Button
@@ -27,23 +27,26 @@ const Root = () =>   {
         }) 
     }
 
+
     //the method called after clicking on the button changes current button state to active
     // and filters the data in the table.
     const handleChangeType = (i, type) => {
         setActiveButtons({...activeButtons, activeButton: activeButtons.allButtons[i]})
         setFilteredData({
-            betaApplications: setFilterDataType(type).betaApplications,
-            matureApplications: setFilterDataType(type).matureApplications
+            betaApplications: genericData.setFilterDataType(type).betaApplications,
+            matureApplications: genericData.setFilterDataType(type).matureApplications
             })
     }
 
-    return (                                                                                                                                                          
+    return (          
+        <>                                                                                                                                                
       <Table
           handleTableHide={handleTableHide}
           tableActive={tableActive}
           handleChangeType={handleChangeType}
           filteredData={filteredData}
           activeButtons={activeButtons}/>
+          </>
     )
 }
 
