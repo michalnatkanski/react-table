@@ -1,8 +1,8 @@
 import dataset from '../dataset.json';
 
-export const genericDataFunction = () => {
+const genericDataFunction = () => {
 
-  const filterAppVersion = (filter, apps) => {
+    const filterAppVersion = (filter, apps) => {
     return apps.filter((app) => filter(app));
   };
 
@@ -49,5 +49,3 @@ export const genericDataFunction = () => {
 }
 
 export const genericData = genericDataFunction();
-
-
