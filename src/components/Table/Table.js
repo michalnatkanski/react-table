@@ -11,12 +11,14 @@ const Table = ({
     handleChangeType,
     filteredData,
     activeButtons,
+    typesFilter
 }) => (
     <>
         <div className={styles.wrapper}>
             <TableFilter
                 handleChangeType={handleChangeType}
-                activeButtons={activeButtons} />
+                activeButtons={activeButtons} 
+                typesFilter={typesFilter}/>
             <TableHeader
                 tableActive={tableActive.matureTable}
                 handleTableHide={() => handleTableHide(true)}>mature</TableHeader>
@@ -31,7 +33,6 @@ const Table = ({
     </>
 );
 
-
 export default Table;
 
 Table.propTypes = {
@@ -39,5 +40,6 @@ Table.propTypes = {
     tableActive: PropTypes.object.isRequired,
     handleChangeType: PropTypes.func.isRequired,
     filteredData: PropTypes.object.isRequired,
-    activeButtons: PropTypes.object.isRequired
+    activeButtons: PropTypes.object
 }
+

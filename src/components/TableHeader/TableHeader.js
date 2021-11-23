@@ -15,5 +15,4 @@ export default TableHeader;
 TableHeader.propTypes = {
     handleTableHide: PropTypes.func.isRequired,
     tableActive: PropTypes.bool.isRequired,
-    children: PropTypes.string,
 }

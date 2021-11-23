@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../TableContent/TableContent.module.scss';
 import propTypes from 'prop-types';
-import { genericData } from '../../helpers/Helpers';
+import { setUrlSlug } from '../../helpers/Helpers';
 
 const TableContent = React.memo(({ data }) => (
     <table className={styles.wrapper}>
@@ -14,7 +14,7 @@ const TableContent = React.memo(({ data }) => (
         </thead>
         <tbody className={styles.wrapper__column}>
             {data.map(row => (
-                <tr onClick={() => genericData.setUrlSlug(row.app)} key={row.id}>
+                <tr onClick={() => setUrlSlug(row.app)} key={row.id}>
                     <td>{row.app}</td>
                     <td>{row.author.name}</td>
                     <td>{row.version}</td>
