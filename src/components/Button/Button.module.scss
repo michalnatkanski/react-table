@@ -1,5 +1,5 @@
-.filterBtn {
-    width: 120px;
+.btn {
+    width: 25%;
     height: 30px;
     border: none;
     margin: 0 auto;
@@ -7,8 +7,8 @@
     cursor: pointer;
 }
 
-.filterBtnActive {
-    @extend .filterBtn;
+.activeBtn {
+    @extend .btn;
     background-color: rgb(133, 163, 89);
 }
 

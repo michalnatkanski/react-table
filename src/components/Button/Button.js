@@ -1,30 +1,29 @@
 import styles from '../Button/Button.module.scss';
 import PropTypes from 'prop-types';
 
-const Button = ({ 
-    handleTableHide, 
-    children, 
-    type, 
-    handleChangeType, 
-    activeButtons, 
-    indexButton 
-    }) => (<button 
-            type="button"
-            className={type ? (activeButtons.activeButton === type ? 
-            styles.filterBtnActive : styles.filterBtn) : (styles.tableBtn)}  
-            onClick={type ? () => handleChangeType(indexButton, type) :  handleTableHide}>
+const Button = ({
+    activeButton,
+    handleChangeDataType,
+    handleTableHide,
+    type,
+    children
+}) => (
+        <button 
+            type="button" 
+            className={type ? (activeButton.activeButton === type ? 
+                styles.activeBtn : styles.btn) : (styles.tableBtn)}  
+            key={type} 
+            onClick={type ? () => handleChangeDataType(type) :  handleTableHide}>
             {children}
-        </button>  
-    )
+        </button>
+)
 
 export default Button;
 
 Button.propTypes = {
-    handleTableHide: PropTypes.func,
-    activeButtons: PropTypes.object,
+    activeButton: PropTypes.object,
     children: PropTypes.string,
     type: PropTypes.string,
-
 }
 
 Button.defaultProps = {

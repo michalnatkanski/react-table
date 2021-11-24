@@ -1,20 +1,20 @@
 import styles from '../TableFilter/TableFilter.module.scss';
 import PropTypes from 'prop-types';
 import Button from "../Button/Button";
-import { typesFilter } from '../../helpers/Helpers';
 
 const TableFilter = ({
-    handleChangeType,
-    activeButtons
+    types,
+    activeButton,
+    handleChangeDataType,
 }) => (
     <div className={styles.wrapper}>
-        {typesFilter.map((type, i) =>
+        {types.map((type) =>
             <Button
-                activeButtons={activeButtons}
-                indexButton={i}
-                handleChangeType={handleChangeType}
                 key={type}
-                type={type}>{type}
+                type={type}
+                activeButton={activeButton}
+                handleChangeDataType={() => handleChangeDataType(type)}>
+                {type}
             </Button>
         )}
     </div>
@@ -23,6 +23,6 @@ const TableFilter = ({
 export default TableFilter;
 
 TableFilter.propTypes = {
-    handleChangeType: PropTypes.func.isRequired,
-    activeButtons: PropTypes.object.isRequired
+    handleChangeDataType: PropTypes.func.isRequired,
+    activeButtons: PropTypes.object
 }
