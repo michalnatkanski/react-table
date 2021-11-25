@@ -10,7 +10,7 @@ const TableHeader = ({
 }) => (
     <div className={styles.wrapper}>
         <h2 className={styles.wrapper__title}>{children}</h2>
-        <Button handleTableHide={() => handleTableHide(true)}>{tableActive ? '+' : '-'}</Button>
+        <Button handleTableHide={() => handleTableHide(true)}>{tableActive ? '-' : '+'}</Button>
     </div>
 )
 

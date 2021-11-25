@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 import Table from '../../components/Table/Table';
 import TableFilter from '../../components/TableFilter/TableFilter';
+import { matureFiltering, betaFiltering, getTypes, getVersionApps } from '../../helpers/Helpers';
 
 const Root = () => {
-    //fetch data hook
+    //stores fetched data
     const [data, setData] = useState([]);
-    //filteringData
+    //stores filtered data, if data is provided, the dataLoaded flag changes to true and displays the data in the table
     const [filteredData, setFilteredData] = useState({ dataLoaded: false, matureApplications: [], betaApplications: [] });
-    //table active
+    //stores information about the active table
     const [tableActive, setTableActive] = useState({ matureTable: true, betaTable: false });
-    //sets the state of the current active button 
+    //stores current active button
     const [activeButton, setActiveButton] = useState({ activeButton: "IT" });
+    //stores a call to a helper function that takes data types
+    const types = getTypes(data);
+    //stores a call to the helper function of the filtered data
+    const matureApps = getVersionApps(data, matureFiltering);
+    const betaApps = getVersionApps(data, betaFiltering);
     //fetching data
     const getData = () => {
         fetch('./dataset.json'
@@ -32,36 +38,7 @@ const Root = () => {
         getData()
     }, [])
 
-    //get app types
-    const getTypes = () => {
-        const appTypes = new Set();
-        data.map((app) => app.type && appTypes.add(app.type));
-        return [...appTypes];
-    };
-
-    const types = getTypes();
-
-    //get version apps function
-    const getVersionApps = (filter) => data.filter(app => filter(app))
-
-    const matureApps = getVersionApps(
-        (app) =>
-            app &&
-            app.version &&
-            parseInt(app.version[0]) >= 1 &&
-            app.author &&
-            app.author.name
-    )
-
-    const betaApps = getVersionApps(
-        (app) =>
-            app &&
-            app.version &&
-            parseInt(app.version[0]) < 1 &&
-            app.author &&
-            app.author.name
-    )
-
+    //returns a filtered data object to hook - filteredData
     const setFilterDataType = (type) => {
         const matureFilterApp = matureApps.filter(app => app.type === type)
         const betaFilterApp = betaApps.filter(app => app.type === type)
@@ -70,6 +47,7 @@ const Root = () => {
             betaApplications: betaFilterApp
         }
     }
+
     //changing data type 
     const handleChangeDataType = (type) => {
         setFilteredData({
