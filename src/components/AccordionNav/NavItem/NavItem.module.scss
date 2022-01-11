@@ -1,0 +1,15 @@
+.item {
+    width: 25%;
+    height: 30px;
+    border: none;
+    text-align: center;
+    line-height: 30px;
+    background-color: rgb(190, 235, 122);
+    cursor: pointer;
+
+    &__active {
+        @extend .item;
+        background-color: rgb(133, 163, 89);
+    }
+}
+

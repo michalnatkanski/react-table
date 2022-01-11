@@ -1,12 +1,10 @@
 import React from 'react';
-import styles from '../TableContent/TableContent.module.scss';
-import propTypes from 'prop-types';
-import { setUrlSlug } from '../../helpers/Helpers';
+import styles from '../AccordionContent/AccordionContent.module.scss';
+import PropTypes from 'prop-types';
+import { setUrlSlug } from '../../../helpers/Helpers';
 
-const TableContent = React.memo(({
-    filteredData,
-    setFilterDataType,
-    isTableLoaded
+const AccordionContent = React.memo(({
+    apps
 }) => (
         <table className={styles.wrapper}>
             <thead>
@@ -17,7 +15,7 @@ const TableContent = React.memo(({
                 </tr>
             </thead>
             <tbody >
-                {(isTableLoaded ? filteredData : setFilterDataType).map(row => (
+                {apps.map(row => (
                     <tr onClick={() => setUrlSlug(row.app)} key={row.id}>
                         <td>{row.app}</td>
                         <td>{row.author.name}</td>
@@ -28,9 +26,8 @@ const TableContent = React.memo(({
         </table>
 ))
 
-export default TableContent;
+export default AccordionContent;
 
-TableContent.propTypes = {
-    filteredData: propTypes.array.isRequired,
-    setFilterDataType: propTypes.array.isRequired
+AccordionContent.propTypes = {
+    apps: PropTypes.array.isRequired
 }
