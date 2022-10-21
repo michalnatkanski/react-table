@@ -19,4 +19,6 @@ open terminal and run -
 2. npm install node-sass (on macbook m1 core node sass is require in 4.14.1 version - npm install node-sass@4.14.1 )
 3. npm start
 
-note: the table screenshot is available in the public folder. /table_view.png
+## Screen
+
+<img src="public/table_view.png" width="400"/>
